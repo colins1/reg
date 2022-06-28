@@ -2,11 +2,13 @@ export default class Validator {
     constructor (name) {
         this.name = name
     }
-
-    validateUsername(name) {
-        const reg = new RegExp('^[a-Z][^0-9]{4}[a-Z0-9-_]+[a-Z]$');
-        if (reg.test(name) == true) {
-            return name;
+    //^[a-Z][0-9]{4}[a-Z0-9-_]+[a-Z]$
+    validateUsername() {
+        const re = /^[A-Za-z][a-z0-9-_]+[a-z]$/;
+        const reNumber = /[0-9]{4}/;
+        if (re.test(this.name) == true && reNumber.test(this.name) == false) {
+            
+            return this.name;
         } else {
             throw new Error('You created the name incorrectly, read the rules for creating a name');
         }

@@ -1,58 +1,65 @@
 import Validator from '../js/date';
 
-
-
+const validator = new Validator('Maxim');
 test('name check 1', () => {
-  expect(() => {
-    new Validator('Maxim'); 
-  }).toBe('Maxim');
+  expect(
+    validator.validateUsername()
+).toBe('Maxim');
 });
 
 test('name check 2', () => {
   expect(() => {
-    new Validator('-Maxim'); 
-  }).toThrow('You created the name incorrectly, read the rules for creating a name');
+    const validator = new Validator('-Maxim');
+    validator.validateUsername();
+}).toThrow('You created the name incorrectly, read the rules for creating a name');
 });
 
 test('name check 3', () => {
   expect(() => {
-    new Validator('_Maxim'); 
+    const validator = new Validator('_Maxim');
+    validator.validateUsername(); 
   }).toThrow('You created the name incorrectly, read the rules for creating a name');
 });
 
 test('name check 4', () => {
   expect(() => {
-    new Validator('02Maxim'); 
+    const validator = new Validator('02Maxim'); 
+    validator.validateUsername();
   }).toThrow('You created the name incorrectly, read the rules for creating a name');
 });
 
 test('name check 5', () => {
   expect(() => {
-    new Validator('Maxim00'); 
+    const validator = new Validator('Maxim00'); 
+    validator.validateUsername();
   }).toThrow('You created the name incorrectly, read the rules for creating a name');
 });
 
 test('name check 6', () => {
   expect(() => {
-    new Validator('Maxim-'); 
+    const validator = new Validator('Maxim-'); 
+    validator.validateUsername();
   }).toThrow('You created the name incorrectly, read the rules for creating a name');
 });
 
 test('name check 7', () => {
   expect(() => {
-    new Validator('Maxim_'); 
+    const validator = new Validator('Maxim_'); 
+    validator.validateUsername();
   }).toThrow('You created the name incorrectly, read the rules for creating a name');
 });
 
 test('name check 8', () => {
   expect(() => {
-    new Validator('@Maxim_'); 
+    const validator = new Validator('@Maxim_'); 
+    validator.validateUsername();
   }).toThrow('You created the name incorrectly, read the rules for creating a name');
 });
 
 test('name check 9', () => {
   expect(() => {
-    new Validator('Max2222im'); 
+    const validator = new Validator('Max2222im'); 
+    validator.validateUsername();
   }).toThrow('You created the name incorrectly, read the rules for creating a name');
 });
 
